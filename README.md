@@ -11,6 +11,8 @@ simple news application using free news API for fetching realtime data from the 
 
 - https://newsapi.org/
 
+## Screenshots
+<img src='images/screen1.gif' width="300" />
 
 
 ## Getting Started
