@@ -6,7 +6,7 @@ simple news application using free news API for fetching realtime data from the 
 - Saving articles to favorite list.
 - Ability to remove artivles from favorite list.
 - Explore latest news based on category.
-- showing areticles using flutter webview.
+- Showing areticles using flutter webview.
 
 ## Api source
 
