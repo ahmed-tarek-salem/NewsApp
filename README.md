@@ -1,6 +1,20 @@
 # NewsApp
 
-A new Flutter project.
+simple news application using free news API for fetching realtime data from the internet.
+
+## Features
+- Saving articles to favorite list.
+- Ability to remove artivles from favorite list.
+- Explore latest news based on category.
+- Showing areticles using flutter webview.
+
+## Api source
+
+- https://newsapi.org/
+
+## Screenshots
+<img src='images/screen1.gif' width="300" />
+
 
 ## Getting Started
 
