@@ -33,6 +33,10 @@ dependencies:
   webview_flutter: ^1.0.1
   provider: ^4.3.2+2
   url_launcher: ^5.7.2
+  sizer: ^1.1.8
+  device_preview: ^0.5.5
+
+
 
 
 

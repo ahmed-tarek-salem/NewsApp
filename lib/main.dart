@@ -1,22 +1,39 @@
 import 'package:NewsApp/widgets/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'screens/welcome_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(DevicePreview(builder: (context) => MyApp()));
 }
+// void main() => runApp(
+//   DevicePreview(
+//     enabled: !kReleaseMode,
+//     builder: (context) => MyApp(), // Wrap your app
+//   ),
+// );
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<myProvider>(
-        create: (context){
-          return myProvider();
+      create: (context) {
+        return myProvider();
+      },
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return OrientationBuilder(builder: (context, orientation) {
+            SizerUtil().init(constraints, orientation);
+            return MaterialApp(
+              locale: DevicePreview.locale(context), // Add the locale here
+              builder: DevicePreview.appBuilder,
+              debugShowCheckedModeBanner: false,
+              home: WelcomeScreen(),
+            );
+          });
         },
-          child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: WelcomeScreen(),
       ),
     );
   }
