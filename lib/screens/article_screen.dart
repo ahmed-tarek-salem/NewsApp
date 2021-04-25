@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class ArticleScreen extends StatefulWidget {
- final String url;
+ final String? url;
   ArticleScreen(this.url);
   @override
   _ArticleScreenState createState() => _ArticleScreenState();

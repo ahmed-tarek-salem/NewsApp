@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
 class CategoryCard extends StatelessWidget {
-  final String nameOfCategory;
+  final String? nameOfCategory;
   CategoryCard(this.nameOfCategory);
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class CategoryCard extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(width: 3.5.w),
-            Text(nameOfCategory.toUpperCase(),
+            Text(nameOfCategory!.toUpperCase(),
                 style: GoogleFonts.montserrat(
                     textStyle: TextStyle(
                   fontSize: 15.0.sp,

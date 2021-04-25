@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
 class Page1 extends StatelessWidget {
-  List<NewsModel> listOfNews;
+  List<NewsModel>? listOfNews;
   @override
   Widget build(BuildContext context) {
     List<CategoryModel> listOfCats;
@@ -52,6 +52,7 @@ class Page1 extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
+                    physics: BouncingScrollPhysics(),
                     itemCount: listOfCats.length,
                     itemBuilder: (context, index) {
                       return CategoryCard(listOfCats[index].nameOfCategory);

@@ -34,7 +34,7 @@ class Page2 extends StatelessWidget {
             builder: (context, myprovider, child) {
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  return NewsCard(
+                  return NewsCardFav(
                     content: myprovider.myList[index].content,
                     desc: myprovider.myList[index].desc,
                     sourceName: myprovider.myList[index].sourceName,

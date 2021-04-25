@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
 class NewsScreen extends StatefulWidget {
-  final String nameOfCategory;
+  final String? nameOfCategory;
   NewsScreen(this.nameOfCategory);
   @override
   _NewsScreenState createState() => _NewsScreenState();

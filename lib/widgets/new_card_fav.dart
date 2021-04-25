@@ -6,12 +6,12 @@ import 'package:NewsApp/widgets/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class NewsCardFav extends StatefulWidget {
-  final String url;
-  final String urlImage;
-  final String title;
-  final String desc;
-  final String content;
-  final String sourceName;
+  final String? url;
+  final String? urlImage;
+  final String? title;
+  final String? desc;
+  final String? content;
+  final String? sourceName;
   NewsCardFav(
       {this.url,
       this.title,
@@ -25,8 +25,8 @@ class NewsCardFav extends StatefulWidget {
 }
 
 class _NewsCardFavState extends State<NewsCardFav> {
-  var myIcon = Icons.favorite;
-  var iconColor = Colors.red;
+  // var myIcon = Icons.favorite;
+  // var iconColor = Colors.red;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -35,93 +35,113 @@ class _NewsCardFavState extends State<NewsCardFav> {
           return ArticleScreen(widget.url);
         }));
       },
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 4.0.w, horizontal: 4.5.h),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15.0.sp),
+      child: Dismissible(
+        key: ValueKey(widget.url),
+        direction: DismissDirection.endToStart,
+        background: Container(
+          margin: EdgeInsets.symmetric(vertical: 2.4.h),
+          alignment: Alignment.centerRight,
+          color: Colors.red,
+          child: Icon(Icons.delete, size: 38.5.sp, color: Colors.white),
         ),
-        height: 22.0.h,
-        width: double.infinity,
-        child: Stack(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15.0.sp),
-                    child: Image(
-                      image: NetworkImage(widget.urlImage),
-                      height: double.infinity,
-                      fit: BoxFit.cover,
+        onDismissed: (_) async {
+          final provider = Provider.of<myProvider>(context, listen: false);
+          await provider.removeFromMyList(NewsModel(
+            content: widget.content,
+            desc: widget.desc,
+            title: widget.title,
+            url: widget.url,
+          ));
+        },
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: 4.0.w, horizontal: 4.5.h),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15.0.sp),
+          ),
+          height: 22.0.h,
+          width: double.infinity,
+          child: Stack(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15.0.sp),
+                      child: Image(
+                        image: NetworkImage(widget.urlImage!),
+                        height: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 4,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            vertical: 2.0.h, horizontal: 3.0.w),
-                        child: Text(
-                          widget.sourceName,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 8.0.sp),
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0.sp),
-                          color: Colors.blue,
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            vertical: 1.0.h, horizontal: 1.0.w),
-                      ),
-                      Expanded(
-                        child: Container(
+                  Expanded(
+                    flex: 4,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
                           margin: EdgeInsets.symmetric(
-                              vertical: 1.0.h, horizontal: 5.0.w),
+                              vertical: 2.0.h, horizontal: 3.0.w),
                           child: Text(
-                            widget.title,
+                            widget.sourceName!,
                             style: TextStyle(
-                                fontSize: 11.0.sp, fontWeight: FontWeight.w500),
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 8.0.sp),
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0.sp),
+                            color: Colors.blue,
+                          ),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 1.0.h, horizontal: 1.0.w),
+                        ),
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.symmetric(
+                                vertical: 1.0.h, horizontal: 5.0.w),
+                            child: Text(
+                              widget.title!,
+                              style: TextStyle(
+                                  fontSize: 11.0.sp,
+                                  fontWeight: FontWeight.w500),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Positioned(
-              child: Consumer<myProvider>(
-                builder: (context, myprovider, child) {
-                  return GestureDetector(
-                    onTap: () {
-                      NewsModel singleItem = NewsModel();
-                      singleItem.title = widget.title;
-                      singleItem.url = widget.url;
-                      singleItem.urlToImage = widget.urlImage;
-                      singleItem.sourceName = widget.sourceName;
-
-                      setState(() {
-                        if (myIcon == Icons.favorite) {
-                          myprovider.removeFromMyList(singleItem);
-                          print(myprovider.myList);
-                        }
-                      });
-                    },
-                    child: Icon(myIcon, color: iconColor),
-                  );
-                },
+                ],
               ),
-              top: 10,
-              right: 10,
-            )
-          ],
+              // Positioned(
+              //   child: Consumer<myProvider>(
+              //     builder: (context, myprovider, child) {
+              //       return GestureDetector(
+              //         onTap: () {
+              //           NewsModel singleItem = NewsModel();
+              //           singleItem.title = widget.title;
+              //           singleItem.url = widget.url;
+              //           singleItem.urlToImage = widget.urlImage;
+              //           singleItem.sourceName = widget.sourceName;
+
+              //           setState(() {
+              //             if (myIcon == Icons.favorite) {
+              //               myprovider.removeFromMyList(singleItem);
+              //               print(myprovider.myList);
+              //             }
+              //           });
+              //         },
+              //         child: Icon(myIcon, color: iconColor),
+              //       );
+              //     },
+              //   ),
+              //   top: 10,
+              //   right: 10,
+              // )
+            ],
+          ),
         ),
       ),
     );

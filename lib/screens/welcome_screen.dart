@@ -1,4 +1,4 @@
-import 'package:NewsApp/screens/home_screen.dart';
+import 'package:NewsApp/layout/home_layout.dart';
 import 'package:NewsApp/screens/info_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -77,7 +77,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return HomeScreen();
+                      return HomeLayout();
                     }));
                   },
                   child: Container(

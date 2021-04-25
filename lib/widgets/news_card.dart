@@ -1,3 +1,4 @@
+import 'package:NewsApp/database_helper.dart';
 import 'package:NewsApp/models/news_model.dart';
 import 'package:NewsApp/screens/article_screen.dart';
 import 'package:flutter/material.dart';
@@ -6,12 +7,12 @@ import 'package:NewsApp/widgets/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class NewsCard extends StatefulWidget {
-  final String url;
-  final String urlImage;
-  final String title;
-  final String desc;
-  final String content;
-  final String sourceName;
+  final String? url;
+  final String? urlImage;
+  final String? title;
+  final String? desc;
+  final String? content;
+  final String? sourceName;
   NewsCard(
       {this.url,
       this.title,
@@ -52,7 +53,7 @@ class _NewsCardState extends State<NewsCard> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15.0.sp),
                     child: Image(
-                      image: NetworkImage(widget.urlImage),
+                      image: NetworkImage(widget.urlImage!),
                       height: double.infinity,
                       fit: BoxFit.cover,
                     ),
@@ -67,7 +68,7 @@ class _NewsCardState extends State<NewsCard> {
                         margin: EdgeInsets.symmetric(
                             vertical: 1.5.h, horizontal: 5.0.w),
                         child: Text(
-                          widget.sourceName,
+                          widget.sourceName!,
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w500,
@@ -85,7 +86,7 @@ class _NewsCardState extends State<NewsCard> {
                           margin: EdgeInsets.symmetric(
                               vertical: 1.0.h, horizontal: 5.0.w),
                           child: Text(
-                            widget.title,
+                            widget.title!,
                             maxLines: 4,
                             style: TextStyle(
                                 fontSize: 11.0.sp, fontWeight: FontWeight.w500),
@@ -101,26 +102,44 @@ class _NewsCardState extends State<NewsCard> {
               child: Consumer<myProvider>(
                 builder: (context, myprovider, child) {
                   return GestureDetector(
-                    onTap: () {
+                    onTap: () async {
                       NewsModel singleItem = NewsModel();
                       singleItem.title = widget.title;
                       singleItem.url = widget.url;
                       singleItem.urlToImage = widget.urlImage;
                       singleItem.sourceName = widget.sourceName;
-
-                      setState(() {
-                        if (myIcon == Icons.favorite_border_outlined) {
+                      if (myIcon == Icons.favorite_border_outlined) {
+                        //save to database
+                        // var databaseHepler = DatabaseHelper.db;
+                        // await databaseHepler.insertData(singleItem);
+                        print('Is Inserted in UI');
+                        setState(() {
                           myIcon = Icons.favorite;
                           iconColor = Colors.red;
-                          myprovider.addToMyList(singleItem);
-                          print(myprovider.myList);
-                        } else {
+                        });
+
+                        myprovider.addToMyList(singleItem);
+                        print(myprovider.myList);
+                      } else {
+                        setState(() {
                           myIcon = Icons.favorite_border_outlined;
                           iconColor = Colors.grey;
-                          myprovider.removeFromMyList(singleItem);
-                          print(myprovider.myList);
-                        }
-                      });
+                        });
+                        myprovider.removeFromMyList(singleItem);
+                        print(myprovider.myList);
+                      }
+                      // setState(() async {
+                      //   if (myIcon == Icons.favorite_border_outlined) {
+                      //     //save to database
+                      //     var databaseHepler = DatabaseHelper.db;
+                      //     await databaseHepler.insertData(singleItem);
+                      //     print('Is Inserted in UI');
+                      //     myIcon = Icons.favorite;
+                      //     iconColor = Colors.red;
+                      //     myprovider.addToMyList(singleItem);
+                      //     print(myprovider.myList);
+                      //   } else {}
+                      // });
                     },
                     child: Icon(
                       myIcon,

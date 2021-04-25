@@ -22,17 +22,14 @@ class MyApp extends StatelessWidget {
       create: (context) {
         return myProvider();
       },
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          return OrientationBuilder(builder: (context, orientation) {
-            SizerUtil().init(constraints, orientation);
-            return MaterialApp(
-              locale: DevicePreview.locale(context), // Add the locale here
-              builder: DevicePreview.appBuilder,
-              debugShowCheckedModeBanner: false,
-              home: WelcomeScreen(),
-            );
-          });
+      child: Sizer(
+        builder: (context, orientation, devicetype) {
+          return MaterialApp(
+            locale: DevicePreview.locale(context), // Add the locale here
+            builder: DevicePreview.appBuilder,
+            debugShowCheckedModeBanner: false,
+            home: WelcomeScreen(),
+          );
         },
       ),
     );

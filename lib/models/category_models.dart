@@ -1,5 +1,5 @@
 class CategoryModel {
 
-  String nameOfCategory;
+  String? nameOfCategory;
 
 }
