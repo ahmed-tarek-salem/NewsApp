@@ -1,7 +1,7 @@
 import 'package:NewsApp/widgets/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'screens/welcome_screen.dart';
+import 'modules/welcome/welcome_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:device_preview/device_preview.dart';
 

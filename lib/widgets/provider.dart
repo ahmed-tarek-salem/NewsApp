@@ -1,4 +1,4 @@
-import 'package:NewsApp/database_helper.dart';
+import 'package:NewsApp/shared/network/local/database_helper.dart';
 import 'package:NewsApp/models/news_model.dart';
 import 'package:flutter/material.dart';
 

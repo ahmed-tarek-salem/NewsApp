@@ -1,9 +1,12 @@
-import 'package:NewsApp/database_helper.dart';
-import 'package:NewsApp/widgets/page1.dart';
-import 'package:NewsApp/widgets/page2.dart';
+import 'package:NewsApp/shared/cubit/cubit.dart';
+import 'package:NewsApp/shared/cubit/states.dart';
+import 'package:NewsApp/shared/network/local/database_helper.dart';
+import 'package:NewsApp/modules/categories/categories_screen.dart';
+import 'package:NewsApp/modules/favourites/favourite_screen.dart';
 import 'package:NewsApp/widgets/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:NewsApp/const.dart';
+import 'package:NewsApp/shared/components/const.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:sqflite/sqflite.dart';
@@ -14,7 +17,6 @@ class HomeLayout extends StatefulWidget {
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
-  int currentIndex = 0;
   List<Widget> listOfPages = [
     Page1(),
     Page2(),
@@ -77,35 +79,44 @@ class _HomeLayoutState extends State<HomeLayout> {
     //     return Page2();
     // }
 
-    return Scaffold(
-      backgroundColor: kBackGroundColor,
-      body: listOfPages[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) {
-          setState(() {
-            // insertDatabase();
-            currentIndex = index;
-          });
+    return BlocProvider(
+        create: (context) {
+          return AppCubit();
         },
-        currentIndex: currentIndex,
-        backgroundColor: kBackGroundColor,
-        elevation: 0,
-        iconSize: 31.0.sp,
-        showUnselectedLabels: false,
-        selectedItemColor: kBackGroundColor,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home,
-                color: currentIndex == 1 ? Colors.grey : Colors.blue),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border_sharp,
-                color: currentIndex == 0 ? Colors.grey : Colors.blue),
-            label: 'Favorite',
-          ),
-        ],
-      ),
-    );
+        child: BlocConsumer<AppCubit, AppStates>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            AppCubit cubit = AppCubit.get(context);
+            return Scaffold(
+              backgroundColor: kBackGroundColor,
+              body: listOfPages[cubit.index],
+              bottomNavigationBar: BottomNavigationBar(
+                onTap: (index) {
+                  cubit.changeIndex(index);
+                },
+                currentIndex: cubit.index,
+                backgroundColor: kBackGroundColor,
+                elevation: 0,
+                iconSize: 31.0.sp,
+                showUnselectedLabels: false,
+                selectedItemColor: kBackGroundColor,
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home,
+                        color: cubit.index == 1 ? Colors.grey : Colors.blue),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.favorite_border_sharp,
+                        color: AppCubit.get(context).index == 0
+                            ? Colors.grey
+                            : Colors.blue),
+                    label: 'Favorite',
+                  ),
+                ],
+              ),
+            );
+          },
+        ));
   }
 }

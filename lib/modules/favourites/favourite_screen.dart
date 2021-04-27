@@ -1,5 +1,5 @@
-import 'package:NewsApp/widgets/new_card_fav.dart';
-import 'package:NewsApp/widgets/news_card.dart';
+import 'package:NewsApp/modules/favourites/new_card_fav.dart';
+import 'package:NewsApp/modules/news/news_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

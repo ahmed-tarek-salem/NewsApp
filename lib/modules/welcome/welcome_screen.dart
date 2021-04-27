@@ -1,9 +1,9 @@
 import 'package:NewsApp/layout/home_layout.dart';
-import 'package:NewsApp/screens/info_screen.dart';
+import 'package:NewsApp/modules/info/info_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:NewsApp/const.dart';
+import 'package:NewsApp/shared/components/const.dart';
 import 'package:sizer/sizer.dart';
 
 class WelcomeScreen extends StatefulWidget {

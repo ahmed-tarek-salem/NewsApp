@@ -1,6 +1,6 @@
-import 'package:NewsApp/database_helper.dart';
+import 'package:NewsApp/shared/network/local/database_helper.dart';
 import 'package:NewsApp/models/news_model.dart';
-import 'package:NewsApp/screens/article_screen.dart';
+import 'package:NewsApp/modules/articles/article_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:NewsApp/widgets/provider.dart';

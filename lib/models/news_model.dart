@@ -1,4 +1,4 @@
-import 'package:NewsApp/const.dart';
+import 'package:NewsApp/shared/components/const.dart';
 
 class NewsModel {
   String? sourceName;

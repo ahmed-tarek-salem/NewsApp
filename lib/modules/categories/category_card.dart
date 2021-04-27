@@ -1,4 +1,4 @@
-import 'package:NewsApp/screens/news_screen.dart';
+import 'package:NewsApp/modules/news/news_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';

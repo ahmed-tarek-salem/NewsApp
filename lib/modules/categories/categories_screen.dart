@@ -1,7 +1,7 @@
 import 'package:NewsApp/models/category_models.dart';
-import 'package:NewsApp/models/data.dart';
+import 'package:NewsApp/shared/network/local/data.dart';
 import 'package:NewsApp/models/news_model.dart';
-import 'package:NewsApp/widgets/category_card.dart';
+import 'package:NewsApp/modules/categories/category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';

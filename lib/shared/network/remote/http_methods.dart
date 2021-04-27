@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:NewsApp/models/news_model.dart';
 import 'package:http/http.dart';
 
-class CategoryNews {
+class HttpMethods {
   List<NewsModel> myNews = [];
 
   Future<void> getNews(String? categoryName) async {

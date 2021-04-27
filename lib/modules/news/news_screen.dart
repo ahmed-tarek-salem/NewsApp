@@ -1,6 +1,6 @@
-import 'package:NewsApp/models/news.dart';
+import 'package:NewsApp/shared/network/remote/http_methods.dart';
 import 'package:NewsApp/models/news_model.dart';
-import 'package:NewsApp/widgets/news_card.dart';
+import 'package:NewsApp/modules/news/news_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,7 +17,7 @@ class _NewsScreenState extends State<NewsScreen> {
   List<NewsModel> myNews = [];
   bool loading = true;
   getNews() async {
-    var x = CategoryNews();
+    var x = HttpMethods();
     await x.getNews(widget.nameOfCategory);
     myNews = x.myNews;
     setState(() {

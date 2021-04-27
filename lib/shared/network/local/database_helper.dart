@@ -1,4 +1,4 @@
-import 'package:NewsApp/const.dart';
+import 'package:NewsApp/shared/components/const.dart';
 import 'package:NewsApp/models/news_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
