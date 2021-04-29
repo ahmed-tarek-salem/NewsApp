@@ -12,17 +12,17 @@ class myProvider extends ChangeNotifier {
   //   await databaseHepler.readData();
   // }
 
-  makeItMarked() {
-    myIcon = Icons.favorite;
-    iconColor = Colors.red;
-    notifyListeners();
-  }
+  // makeItMarked() {
+  //   myIcon = Icons.favorite;
+  //   iconColor = Colors.red;
+  //   notifyListeners();
+  // }
 
-  makeItUnMarked() {
-    myIcon = Icons.favorite_border_outlined;
-    iconColor = Colors.grey;
-    notifyListeners();
-  }
+  // makeItUnMarked() {
+  //   myIcon = Icons.favorite_border_outlined;
+  //   iconColor = Colors.grey;
+  //   notifyListeners();
+  // }
 
   addToMyList(NewsModel singleItem) async {
     myList.add(singleItem);

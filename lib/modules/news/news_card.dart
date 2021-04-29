@@ -1,9 +1,12 @@
+import 'package:NewsApp/modules/favourites/cubit/cubit.dart';
+import 'package:NewsApp/modules/favourites/cubit/states.dart';
 import 'package:NewsApp/shared/network/local/database_helper.dart';
 import 'package:NewsApp/models/news_model.dart';
 import 'package:NewsApp/modules/articles/article_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:NewsApp/widgets/provider.dart';
+import 'package:NewsApp/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class NewsCard extends StatefulWidget {
@@ -99,8 +102,10 @@ class _NewsCardState extends State<NewsCard> {
               ],
             ),
             Positioned(
-              child: Consumer<myProvider>(
-                builder: (context, myprovider, child) {
+              child: BlocConsumer<FavouriteCubit, FavouriteStates>(
+                listener: (context, state) {},
+                builder: (context, state) {
+                  FavouriteCubit cubit = FavouriteCubit.get(context);
                   return GestureDetector(
                     onTap: () async {
                       NewsModel singleItem = NewsModel();
@@ -109,24 +114,21 @@ class _NewsCardState extends State<NewsCard> {
                       singleItem.urlToImage = widget.urlImage;
                       singleItem.sourceName = widget.sourceName;
                       if (myIcon == Icons.favorite_border_outlined) {
-                        //save to database
-                        // var databaseHepler = DatabaseHelper.db;
-                        // await databaseHepler.insertData(singleItem);
-                        print('Is Inserted in UI');
+                        // print('Is Inserted in UI');
                         setState(() {
                           myIcon = Icons.favorite;
                           iconColor = Colors.red;
                         });
 
-                        myprovider.addToMyList(singleItem);
-                        print(myprovider.myList);
+                        cubit.addToMyList(singleItem);
+                        // print(cubit.myList);
                       } else {
                         setState(() {
                           myIcon = Icons.favorite_border_outlined;
                           iconColor = Colors.grey;
                         });
-                        myprovider.removeFromMyList(singleItem);
-                        print(myprovider.myList);
+                        cubit.removeFromMyList(singleItem);
+                        // print(cubit.myList);
                       }
                       // setState(() async {
                       //   if (myIcon == Icons.favorite_border_outlined) {
@@ -158,3 +160,41 @@ class _NewsCardState extends State<NewsCard> {
     );
   }
 }
+
+// Positioned(
+//   top: 1.5.h,
+//   right: 2.0.w,
+//   child: Consumer<myProvider>(
+//     builder: (context, myprovider, child) {
+//       return GestureDetector(
+//         onTap: () async {
+//           NewsModel singleItem = NewsModel();
+//           singleItem.title = widget.title;
+//           singleItem.url = widget.url;
+//           singleItem.urlToImage = widget.urlImage;
+//           singleItem.sourceName = widget.sourceName;
+//           if (myIcon == Icons.favorite_border_outlined) {
+//             print('Is Inserted in UI');
+//             setState(() {
+//               myIcon = Icons.favorite;
+//               iconColor = Colors.red;
+//             });
+
+//             myprovider.addToMyList(singleItem);
+//           } else {
+//             setState(() {
+//               myIcon = Icons.favorite_border_outlined;
+//               iconColor = Colors.grey;
+//             });
+//             myprovider.removeFromMyList(singleItem);
+//           }
+//         },
+//         child: Icon(
+//           myIcon,
+//           color: iconColor,
+//           size: 15.0.sp,
+//         ),
+//       );
+//     },
+//   ),
+// )

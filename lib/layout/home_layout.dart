@@ -1,9 +1,10 @@
+import 'package:NewsApp/modules/favourites/cubit/cubit.dart';
 import 'package:NewsApp/shared/cubit/cubit.dart';
 import 'package:NewsApp/shared/cubit/states.dart';
 import 'package:NewsApp/shared/network/local/database_helper.dart';
 import 'package:NewsApp/modules/categories/categories_screen.dart';
 import 'package:NewsApp/modules/favourites/favourite_screen.dart';
-import 'package:NewsApp/widgets/provider.dart';
+import 'package:NewsApp/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:NewsApp/shared/components/const.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,8 +61,8 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   @override
   void initState() {
-    Provider.of<myProvider>(context, listen: false).fetchDataFromSQl();
-    // createDatabase();
+    // Provider.of<myProvider>(context, listen: false).fetchDataFromSQl();
+    FavouriteCubit.get(context).fetchDataFromSQl();
     super.initState();
   }
 

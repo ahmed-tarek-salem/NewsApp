@@ -1,5 +1,7 @@
-import 'package:NewsApp/widgets/provider.dart';
+import 'package:NewsApp/modules/favourites/cubit/cubit.dart';
+import 'package:NewsApp/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'modules/welcome/welcome_screen.dart';
 import 'package:provider/provider.dart';
@@ -24,11 +26,16 @@ class MyApp extends StatelessWidget {
       },
       child: Sizer(
         builder: (context, orientation, devicetype) {
-          return MaterialApp(
-            locale: DevicePreview.locale(context), // Add the locale here
-            builder: DevicePreview.appBuilder,
-            debugShowCheckedModeBanner: false,
-            home: WelcomeScreen(),
+          return BlocProvider(
+            create: (context) {
+              return FavouriteCubit();
+            },
+            child: MaterialApp(
+              locale: DevicePreview.locale(context), // Add the locale here
+              builder: DevicePreview.appBuilder,
+              debugShowCheckedModeBanner: false,
+              home: WelcomeScreen(),
+            ),
           );
         },
       ),
