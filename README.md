@@ -6,23 +6,22 @@ simple news application using free news API for fetching realtime data from the 
 
 https://drive.google.com/file/d/1d2OiHr9M8SWLqKaXfrMMNRTljuPhfiAJ/view?usp=sharing
 
-## Features
+# Features
 - Saving articles to favorite list.
 - Ability to remove articles from favorite list.
 - Explore latest news based on category.
 - Showing articles using flutter webview.
 - Local storage using sqflite.
+
+# Screenshots
+
+<img src='screenshots/screen1.gif' width="400" />
+<img src='screenshots/screen2.jpg' width="400" />
+
+
 ## Api source
 
 - https://newsapi.org/
-
-## Screenshots
-<p align="center">
-
-<img src='screenshots/screen1.gif' width="450" />
-<img src='screenshots/screen1.jpg' width="450" />
-
-</p>
 
 
 ## Getting Started
