@@ -1,6 +1,4 @@
-import 'package:NewsApp/models/news_model.dart';
 import 'package:NewsApp/shared/cubit/states.dart';
-import 'package:NewsApp/shared/network/local/database_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppCubit extends Cubit<AppStates> {

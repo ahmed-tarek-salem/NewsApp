@@ -1,5 +1,6 @@
 import 'package:NewsApp/layout/home_layout.dart';
 import 'package:NewsApp/modules/info/info_screen.dart';
+import 'package:NewsApp/shared/network/remote/http_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,7 +12,16 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
+ 
+
 class _WelcomeScreenState extends State<WelcomeScreen> {
+
+  @override
+  void didChangeDependencies() async{
+      await HttpMethods().getAds();
+
+    super.didChangeDependencies();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

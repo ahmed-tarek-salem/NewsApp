@@ -58,8 +58,8 @@ class _NewsScreenState extends State<NewsScreen> {
                           Navigator.pop(context);
                         },
                       ),
-                      SvgPicture.asset('images/${widget.nameOfCategory}.svg',
-                          height: 11.0.h)
+                      // SvgPicture.asset('images/${widget.nameOfCategory}.svg',
+                      //     height: 11.0.h)
                     ],
                   ),
                 ),

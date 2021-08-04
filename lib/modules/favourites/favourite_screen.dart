@@ -1,14 +1,11 @@
 import 'package:NewsApp/modules/favourites/cubit/cubit.dart';
 import 'package:NewsApp/modules/favourites/cubit/states.dart';
 import 'package:NewsApp/modules/favourites/new_card_fav.dart';
-import 'package:NewsApp/modules/news/news_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:NewsApp/provider.dart';
 
-class Page2 extends StatelessWidget {
+class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

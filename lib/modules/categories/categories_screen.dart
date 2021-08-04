@@ -1,14 +1,12 @@
-import 'package:NewsApp/models/category_models.dart';
+import 'package:NewsApp/models/category_model.dart';
 import 'package:NewsApp/shared/network/local/data.dart';
-import 'package:NewsApp/models/news_model.dart';
 import 'package:NewsApp/modules/categories/category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
 
-class Page1 extends StatelessWidget {
-  List<NewsModel>? listOfNews;
+class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<CategoryModel> listOfCats;

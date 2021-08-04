@@ -1,31 +1,29 @@
-import 'package:NewsApp/models/category_models.dart';
+import 'package:NewsApp/models/category_model.dart';
 
-List <CategoryModel> getCategories(){
-  List <CategoryModel> listOfCats=[];
-  CategoryModel singleCat= CategoryModel();
-  singleCat.nameOfCategory= 'general';
+List<CategoryModel> getCategories() {
+  List<CategoryModel> listOfCats = [];
+  CategoryModel singleCat = CategoryModel();
+  singleCat.nameOfCategory = 'general';
   listOfCats.add(singleCat);
 
-   singleCat= CategoryModel();
-  singleCat.nameOfCategory= 'health';
+  singleCat = CategoryModel();
+  singleCat.nameOfCategory = 'health';
   listOfCats.add(singleCat);
 
-   singleCat= CategoryModel();
-  singleCat.nameOfCategory= 'science';
+  singleCat = CategoryModel();
+  singleCat.nameOfCategory = 'science';
   listOfCats.add(singleCat);
 
-
-   singleCat= CategoryModel();
-  singleCat.nameOfCategory= 'sports';
+  singleCat = CategoryModel();
+  singleCat.nameOfCategory = 'sports';
   listOfCats.add(singleCat);
 
-
-   singleCat= CategoryModel();
-  singleCat.nameOfCategory= 'technology';
+  singleCat = CategoryModel();
+  singleCat.nameOfCategory = 'technology';
   listOfCats.add(singleCat);
 
-   singleCat= CategoryModel();
-  singleCat.nameOfCategory= 'business';
+  singleCat = CategoryModel();
+  singleCat.nameOfCategory = 'business';
   listOfCats.add(singleCat);
 
   return listOfCats;
